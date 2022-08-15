@@ -68,7 +68,9 @@
                             window.location.href = "/product?action=list&q=" + a;
                         }
                     </script>
-                    <a href="/product?action=create" class="btn btn-success">ADD PRODUCT</a>
+                    <c:if test="${sessionScope.acc.getIdRole() == 1}">
+                        <a href="/product?action=create" class="btn btn-success">ADD PRODUCT</a>
+                    </c:if>
                     <div class="row">
                         <c:forEach items="${listP}" var="o">
                             <div class="col-12 col-md-6 col-lg-4">
@@ -93,14 +95,14 @@
                                         </div>
                                         <div class="row">
                                             <c:if test="${sessionScope.acc.getIdRole() == 1}">
-                                            <div class="col">
-                                                <a href="/product?action=edit&idProduct=${o.getIdProduct()}"
-                                                   class="btn btn-info btn-block">Edit</a>
-                                            </div>
-                                            <div class="col">
-                                                <a href="#" class="btn btn-danger btn-block"
-                                                   onclick="showMessage(idProduct=${o.getIdProduct()})">Delete</a>
-                                            </div>
+                                                <div class="col">
+                                                    <a href="/product?action=edit&idProduct=${o.getIdProduct()}"
+                                                       class="btn btn-info btn-block">Edit</a>
+                                                </div>
+                                                <div class="col">
+                                                    <a href="#" class="btn btn-danger btn-block"
+                                                       onclick="showMessage(idProduct=${o.getIdProduct()})">Delete</a>
+                                                </div>
                                             </c:if>
                                         </div>
                                     </div>
